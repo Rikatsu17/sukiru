@@ -6,7 +6,10 @@ from alembic import context
 from app.core.config import settings
 from app.db.base import Base
 
-# импортируем модели
+# Импортируем модели, чтобы Alembic видел всю metadata.
+from app.models.application import Application
+from app.models.task import Task
+from app.models.transaction import Transaction
 from app.models.user import User
 
 config = context.config
