@@ -14,6 +14,7 @@ class UserBase(BaseModel):
     course: str | None = Field(default="", max_length=100)
     avatar_url: AnyHttpUrl | None = None
 
+
 class UserCreate(UserBase):
     password: str = Field(min_length=8, max_length=128)
 
@@ -29,6 +30,7 @@ class UserUpdate(BaseModel):
     faculty: str | None = Field(default=None, max_length=100)
     course: str | None = Field(default=None, max_length=100)
     avatar_url: AnyHttpUrl | None = None
+
 
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
