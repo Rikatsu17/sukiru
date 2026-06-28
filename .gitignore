@@ -12,7 +12,7 @@ venv/
 
 # Environment variables
 .env
-
+.env.example
 # IDE
 .vscode/
 .idea/
