@@ -6,7 +6,7 @@ from alembic import context
 from app.core.config import settings
 from app.db.base import Base
 
-# Импортируем модели, чтобы Alembic видел всю metadata.
+# Import models so Alembic sees all tables in Base.metadata.
 from app.models.application import Application
 from app.models.task import Task
 from app.models.transaction import Transaction
