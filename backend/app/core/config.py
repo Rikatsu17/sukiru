@@ -8,8 +8,11 @@ class Settings(BaseSettings):
     )
     PROJECT_VERSION: str = "1.0.0"
 
-    DB_HOST: str
-    DB_PORT: int
+    # Allow sensible defaults and optional DATABASE_URL override
+    DATABASE_URL: str | None = None
+
+    DB_HOST: str = "localhost"
+    DB_PORT: int = 5432
     DB_NAME: str
     DB_USER: str
     DB_PASSWORD: str
@@ -30,6 +33,10 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
+        # Allow explicit DATABASE_URL env var to override composed parts
+        if self.DATABASE_URL:
+            return self.DATABASE_URL
+
         return (
             "postgresql+asyncpg://"
             f"{self.DB_USER}:{self.DB_PASSWORD}"
